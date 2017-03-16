@@ -32,8 +32,10 @@ angular.module('myApp.home', ['ngRoute'])
 
         }
 
-        function error(data) {
-            console.log("error: " + data);
+        function error(err) {
+            console.log("error: " + err.message);
+            $scope.errorMsg = err.message;
+            $scope.$apply();
         }
 
         function validLoginError(data) {
