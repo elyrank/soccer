@@ -17,13 +17,15 @@
   <!--<script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>-->
   <script src="https://api.backendless.com/sdk/js/latest/backendless.js"></script>
 </head>
-<body>
+<body ng-controller="registerCtrl">
 <h1 class="title">LivePerson Soccer Team</h1>
   <ul class="menu">
     <li><a href="#!/home">Home</a></li>
     <li><a href="#!/location">Location</a></li>
+
     <li class="register"><a href="#!/register">Register</a></li>
     <li class="login"><a href="#!/login">Login</a></li>
+    <li class="fbMenu"><button type=button class="fb_login" ng-click="loginWithFb()">Login With Facebook</button></li>
   </ul>
 
 

@@ -10,7 +10,7 @@ body {
     text-align: center;
     width: 100%;
     color: white;
-    padding: 14px 16px;
+    padding: 10px 16px;
     opacity: 1;
     position: fixed;
     top: 0;
@@ -51,12 +51,12 @@ a {
     background-color: green;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 16px;
     text-decoration: none;
     opacity: 1
 }
 
-.register, .login {
+.register, .login, .fbMenu {
     float: right;
 }
 
@@ -211,12 +211,16 @@ th {
     height: 1500px;
 }
 
-#fb_login {
+.fb_login {
     background: url(register/btn_facebook_bg.png) no-repeat 0 0;
     width: 206px;
     border: 0;
     color: #fff;
     padding: 10px 10px 10px 40px;
+    margin:0 0 0 0;
+}
+
+.fbBtn {
     margin:10px 0 0 0;
 }
 

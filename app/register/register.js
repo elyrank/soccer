@@ -63,6 +63,8 @@ angular.module('myApp.register', ['ngRoute'])
             function fbSuccess(data) {
                 console.log("fb success");
                 console.log(data);
+                $window.location.href = "/#!/home";
+                $window.location.reload();
             }
 
             function fbError(err) {

@@ -12,6 +12,7 @@ angular.module('myApp.home', ['ngRoute'])
     .controller('homeCtrl', ['$scope', function ($scope) {
 
         $scope.gameDate = getNextGameDate();
+        isValid();
         $scope.currentUser = null;
         $scope.errorMsg = null;
 
@@ -44,15 +45,17 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.$apply();
         }
 
-        Backendless.UserService.isValidLogin().then(isValidResponse).catch(validLoginError);
+        function isValid() {
+            Backendless.UserService.isValidLogin().then(isValidResponse).catch(validLoginError);
+        }
 
 
         // get objectId of the logged-in user:
-        var userObjectId = Backendless.LocalCache.get("current-user-id");
+        //var userObjectId = Backendless.LocalCache.get("current-user-id");
 
         // get user-token of the logged-in user:
-        var userToken = Backendless.LocalCache.get("user-token");
-        console.log(userToken);
+        //var userToken = Backendless.LocalCache.get("user-token");
+
 
         function getUsersSuccess(users) {
             users.data.sort(function (a, b) {
@@ -89,9 +92,6 @@ angular.module('myApp.home', ['ngRoute'])
                 console.log("update success: " + user);
                 Backendless.Persistence.of(Backendless.User).find(new Backendless.Async(getUsersSuccess, error));
             }
-
-
-
             Backendless.UserService.update($scope.currentUser, new Backendless.Async(updateSuccess, error));
         };
 
@@ -116,7 +116,6 @@ function getNextGameDate() {
     d.setMinutes(0);
     d.setSeconds(0);
     d.setMilliseconds(0);
-    console.log(d);
     return d;
 }
 
