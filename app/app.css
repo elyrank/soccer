@@ -168,7 +168,8 @@ table, th, td {
 }
 
 th {
-    background-color: #f6a828;
+    background-color: green;
+    color: white;
 }
 
 .state {

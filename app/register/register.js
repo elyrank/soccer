@@ -42,7 +42,9 @@ angular.module('myApp.register', ['ngRoute'])
             $scope.errorMsg = msg;
         }
 
-
+        $scope.cancel = function() {
+            $window.location.href = "/#!/home";
+        }
 
 
     }]);

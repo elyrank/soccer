@@ -32,4 +32,9 @@ angular.module('myApp.login', ['ngRoute'])
             $scope.errorMsg = msg;
         }
 
+
+        $scope.cancel = function() {
+            $window.location.href = "/#!/home";
+        }
+
     }]);

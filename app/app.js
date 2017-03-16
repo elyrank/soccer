@@ -5,13 +5,14 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.register',
     'myApp.login',
+    'myApp.location',
     'myApp.home',
     'myApp.version'
 ]).
     config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
 
-        $routeProvider.otherwise({redirectTo: '/register'});
+        $routeProvider.otherwise({redirectTo: '/home'});
     }]);
 
 
