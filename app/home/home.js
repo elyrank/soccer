@@ -24,7 +24,7 @@ angular.module('myApp.home', ['ngRoute'])
         function isValidResponse(success) {
             if (success) {
                 console.log("success: " + success);
-                Backendless.UserService.getCurrentUser().then(setUser);
+                Backendless.UserService.getCurrentUser().then(setUser).catch(error);
             } else {
                 $scope.errorMsg = "Please login";
                 $scope.$apply();
