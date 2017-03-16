@@ -1,0 +1,39 @@
+<div ng-app="myApp" ng-controller="loginCtrl">
+
+    <div class="container, home">
+
+        <p class="next">Next game: {{gameDate | date:'MMM dd, yyyy HH:mm'}}</p>
+        <span class="errorMsg">{{errorMsg}}</span>
+
+        <div ng-show="currentUser">
+            <span class="name">Welcome {{currentUser.name}}</span>
+
+            <p>Are you playing?</p>
+            <button type="button" class="yes play" ng-click="playing('Yes')">Yes</button>
+            <button type="button" class="no play" ng-click="playing('No')">No</button>
+            <button type="button" class="maybe play" ng-click="playing('Maybe')">Maybe</button>
+
+        </div>
+
+        <p>Total: Yes: {{playersYes}}, No: {{playersNo}}, Maybe: {{playersMaybe}}
+            <span ng-show="gameState" class="gameState">Game On!</span>
+        </p>
+        <table class="gameTable">
+            <tr>
+                <th class="header">Name</th>
+                <th class="header">Status</th>
+            </tr>
+            <tbody ng-repeat="user in users">
+            <tr>
+                <td class="tableName">{{user.name}}</td>
+                <td class="state"
+                    ng-class="{yes: user.state == 'Yes', no: user.state == 'No', maybe: user.state == 'Maybe'}">
+                    {{user.state}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

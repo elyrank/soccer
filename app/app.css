@@ -1,0 +1,203 @@
+/* app css stylesheet */
+body {
+    background-image: url("soccer-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+
+.menu {
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+    display: inline;
+
+}
+
+ul {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(51, 51, 51, 0.5);
+
+
+}
+
+li {
+    opacity: 1;
+    float: left;
+    padding: 5px;
+    /*border-right: 1px solid #bbb;*/
+}
+
+a {
+    display: block;
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    opacity: 1
+}
+
+
+.register, .login {
+    float: right;
+}
+
+
+
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password], input[type=email] {
+    /*float: left;*/
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+
+}
+
+.errorMsg {
+    color: red;
+
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+.home {
+    text-align: center;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+    float: left;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 15px;
+
+}
+
+.gameTable {
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+th {
+    background-color: #f6a828;
+}
+
+.state {
+    text-align: center;
+    width: 40px;
+}
+
+.play {
+    color: black;
+    border: groove;
+
+}
+
+.yes {
+    background-color: lawngreen;
+}
+
+.no {
+    background-color: red;
+}
+
+.maybe {
+    background-color: yellow;
+}
+
+.gameState {
+    background-color: lawngreen;
+    margin: 5px;
+    padding: 10px;
+}
+
+.version {
+
+}
+
+.view {
+    padding:20px;
+    margin-top:40px;
+    height:1500px;
+}
