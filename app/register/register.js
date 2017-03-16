@@ -11,6 +11,15 @@ angular.module('myApp.register', ['ngRoute'])
 
     .controller('registerCtrl',  ['$scope' , '$window' , function($scope, $window) {
 
+        var facebookFieldsMapping = {
+            "email": "email",
+            "name": "name"
+        };
+        var container = {
+            "AppId": "1593715633979542",
+            "AppSecret": "8ce4aef5b29bac2349d0e171674b9180"
+        };
+
         $scope.errorMsg = null;
         $scope.register = function () {
             console.log("registering user");
@@ -44,7 +53,27 @@ angular.module('myApp.register', ['ngRoute'])
 
         $scope.cancel = function() {
             $window.location.href = "/#!/home";
-        }
+        };
+
+        $scope.loginWithFb = function() {
+
+            var permissions = ["email", "public_profile"];
+
+
+            function fbSuccess(data) {
+                console.log("fb success");
+                console.log(data);
+            }
+
+            function fbError(err) {
+                console.log("fb error");
+                console.log(err);
+
+            }
+
+            Backendless.UserService.loginWithFacebook(facebookFieldsMapping, permissions, new Backendless.Async(fbSuccess, fbError), container);
+
+        };
 
 
     }]);
