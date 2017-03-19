@@ -19,6 +19,8 @@ angular.module('myApp.register', ['ngRoute'])
             "AppId": "1593715633979542",
             "AppSecret": "8ce4aef5b29bac2349d0e171674b9180"
         };
+        var permissions = ["email", "public_profile"];
+
 
         $scope.errorMsg = null;
         $scope.register = function () {
@@ -56,9 +58,6 @@ angular.module('myApp.register', ['ngRoute'])
         };
 
         $scope.loginWithFb = function() {
-
-            var permissions = ["email", "public_profile"];
-
 
             function fbSuccess(data) {
                 console.log("fb success");
