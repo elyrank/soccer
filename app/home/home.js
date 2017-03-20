@@ -15,6 +15,7 @@ angular.module('myApp.home', ['ngRoute'])
         isValid();
         $scope.currentUser = null;
         $scope.errorMsg = null;
+        getAllUsers();
 
         function setUser(user) {
             $scope.currentUser = user;
@@ -83,14 +84,20 @@ angular.module('myApp.home', ['ngRoute'])
         }
 
 
-        Backendless.Persistence.of(Backendless.User).find(new Backendless.Async(getUsersSuccess, error));
+        function getAllUsers() {
+            var query = new Backendless.DataQuery();
+            query.options = {
+                pageSize: 100
+            };
+            Backendless.Persistence.of(Backendless.User).find(query, new Backendless.Async(getUsersSuccess, error));
+        }
 
         $scope.playing = function (state) {
             console.log("playing : " + state);
             $scope.currentUser.state = state;
             function updateSuccess(user) {
                 console.log("update success: " + user);
-                Backendless.Persistence.of(Backendless.User).find(new Backendless.Async(getUsersSuccess, error));
+                getAllUsers();
             }
             Backendless.UserService.update($scope.currentUser, new Backendless.Async(updateSuccess, error));
         };
