@@ -1,10 +1,10 @@
-<div ng-app="myApp" ng-controller="loginCtrl">
+<div>
 
     <div class="container, home">
 
         <div class="data">
             <p class="next">Next game: {{gameDate | date:'MMM dd, yyyy HH:mm'}}</p>
-            <span class="errorMsg">{{errorMsg}}</span>
+            <p class="errorMsg">{{errorMsg}}</p>
 
             <div ng-show="currentUser">
                 <span class="name">Welcome {{currentUser.name}}</span>

@@ -14,7 +14,6 @@ angular.module('myApp.home', ['ngRoute'])
         $scope.gameDate = getNextGameDate();
         isValid();
         $scope.currentUser = null;
-        $scope.errorMsg = null;
         getAllUsers();
 
         function setUser(user) {
@@ -36,7 +35,12 @@ angular.module('myApp.home', ['ngRoute'])
 
         function error(err) {
             console.log("error: " + err.message);
-            $scope.errorMsg = err.message;
+            console.log(err);
+            if (err.code == 3064) {
+                $scope.errorMsg = "Please Re-login"
+            } else {
+                $scope.errorMsg = err.message;
+            }
             $scope.$apply();
         }
 
