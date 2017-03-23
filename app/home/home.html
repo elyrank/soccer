@@ -2,26 +2,29 @@
 
     <div class="container, home">
 
-        <p class="next">Next game: {{gameDate | date:'MMM dd, yyyy HH:mm'}}</p>
-        <span class="errorMsg">{{errorMsg}}</span>
+        <div class="data">
+            <p class="next">Next game: {{gameDate | date:'MMM dd, yyyy HH:mm'}}</p>
+            <span class="errorMsg">{{errorMsg}}</span>
 
-        <div ng-show="currentUser">
-            <span class="name">Welcome {{currentUser.name}}</span>
+            <div ng-show="currentUser">
+                <span class="name">Welcome {{currentUser.name}}</span>
 
-            <p>Are you playing?</p>
-            <button type="button" class="yes play" ng-click="playing('Yes')">Yes</button>
-            <button type="button" class="no play" ng-click="playing('No')">No</button>
-            <button type="button" class="maybe play" ng-click="playing('Maybe')">Maybe</button>
+                <p>Are you playing?</p>
+                <button type="button" class="yes play" ng-click="playing('Yes')">Yes</button>
+                <button type="button" class="no play" ng-click="playing('No')">No</button>
+                <button type="button" class="maybe play" ng-click="playing('Maybe')">Maybe</button>
 
-        </div>
+            </div>
 
-        <p>Total: Yes: {{playersYes}}, No: {{playersNo}}, Maybe: {{playersMaybe}}
+            <p>Total: Yes: {{playersYes}}, No: {{playersNo}}, Maybe: {{playersMaybe}}</p>
             <span ng-show="gameState" class="gameState">Game On!</span>
-        </p>
+        </div>
+        <div id="placeholder"></div>
+        <div>
         <table class="gameTable">
-            <tr>
-                <th class="header">Name</th>
-                <th class="header">Status</th>
+            <tr class="header">
+                <th class="w3-theme-l2 name">Name</th>
+                <th class="w3-theme-l2">Status</th>
             </tr>
             <tbody ng-repeat="user in users">
             <tr>
@@ -33,6 +36,8 @@
             </tr>
             </tbody>
         </table>
+        </div>
+
     </div>
 
 
