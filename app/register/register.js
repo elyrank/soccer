@@ -39,14 +39,19 @@ angular.module('myApp.register', ['ngRoute'])
 
         function userRegistered(user) {
             console.log("user has registered");
-            $window.location.href = "/#!/login"
+            $window.location.href = "/#!/login";
         }
 
         function registrationError(err) {
-            console.log("error message - " + err.message);
-            console.log("error code - " + err.statusCode);
-            handleErrorMsg("Received error from server: " + err.message);
-            $scope.$apply();
+			console.log("error message - " + err.message);
+			console.log(err);
+			if (err.code === 5050) {
+				console.log("retry registration");
+				$scope.register();
+			} else {
+                handleErrorMsg("Received error from server: " + err.message);
+                $scope.$apply();
+            }
         }
 
         function handleErrorMsg(msg) {
@@ -61,7 +66,7 @@ angular.module('myApp.register', ['ngRoute'])
 
             function fbSuccess(data) {
                 console.log("fb success");
-                console.log(data);
+                // console.log(data);
                 $window.location.href = "/#!/home";
                 $window.location.reload();
             }
@@ -72,7 +77,7 @@ angular.module('myApp.register', ['ngRoute'])
 
             }
 
-            Backendless.UserService.loginWithFacebook(facebookFieldsMapping, permissions, new Backendless.Async(fbSuccess, fbError), container);
+            Backendless.UserService.loginWithFacebook(facebookFieldsMapping, permissions, true).then(fbSuccess, fbError);
 
         };
 

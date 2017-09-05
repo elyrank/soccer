@@ -13,19 +13,24 @@ angular.module('myApp.login', ['ngRoute'])
         $scope.errorMsg = null;
         $scope.login = function () {
             console.log("login user");
-            Backendless.UserService.login($scope.user.email, $scope.user.password, $scope.user.remember, new Backendless.Async( userLoggedIn, loginError ));
+            Backendless.UserService.login($scope.user.email, $scope.user.password, $scope.user.remember).then(userLoggedIn, loginError);
         };
 
         function userLoggedIn(user) {
             console.log("user has logged in");
-            $window.location.href = "/#!/home"
+            $window.location.href = "/#!/home";
         }
 
         function loginError(err) {
             console.log("error message - " + err.message);
             console.log("error code - " + err.statusCode);
-            handleErrorMsg("Received error from server: " + err.message);
-            $scope.$apply();
+			if (err.code === 5050) {
+				console.log("retry login");
+				$scope.login();
+			} else {
+				handleErrorMsg("Received error from server: " + err.message);
+				$scope.$apply();
+			}
         }
 
         function handleErrorMsg(msg) {
@@ -35,6 +40,6 @@ angular.module('myApp.login', ['ngRoute'])
 
         $scope.cancel = function() {
             $window.location.href = "/#!/home";
-        }
+        };
 
     }]);

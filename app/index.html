@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <!--<script src="https://api.backendless.com/sdk/js/v3/backendless.min.js"></script>-->
-  <script src="https://api.backendless.com/sdk/js/v3/backendless.js"></script>
+  <script src="https://api.backendless.com/sdk/js/v4/beta/backendless.js"></script>
   <meta name=viewport content='width=700'>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 
@@ -24,11 +24,11 @@
 
 
   <ul class="menu w3-container ">
-    <li><a href="#!/home">Home</a></li>
-    <li><a href="#!/location">Location</a></li>
+    <li><a class="menu-link" href="#!/home">Home</a></li>
+    <li><a class="menu-link" href="#!/location">Location</a></li>
 
-    <li class="register"><a href="#!/register">Register</a></li>
-    <li class="login"><a href="#!/login">Login</a></li>
+    <li class="register"><a class="menu-link" href="#!/register">Register</a></li>
+    <li class="login"><a class="menu-link" href="#!/login">Login</a></li>
     <li class="fbMenu"><button type=button class="fb_login" ng-click="loginWithFb()">Login With Facebook</button></li>
   </ul>
 
@@ -50,6 +50,7 @@
   <script src="app.js"></script>
   <script src="register/register.js"></script>
   <script src="login/login.js"></script>
+  <script src="forgot/forgot.js"></script>
   <script src="location/location.js"></script>
   <script src="home/home.js"></script>
   <script src="components/version/version.js"></script>

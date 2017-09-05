@@ -48,7 +48,7 @@ li {
     padding: 5px;
 }
 
-a {
+.menu-link {
     display: block;
     color: white;
     text-align: center;
@@ -113,6 +113,11 @@ img.avatar {
 /* Add padding to containers */
 .container {
     padding: 16px;
+}
+
+
+.forgot {
+    text-align: left;
 }
 
 .home {

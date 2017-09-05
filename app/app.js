@@ -5,6 +5,7 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.register',
     'myApp.login',
+    'myApp.forgot',
     'myApp.location',
     'myApp.home',
     'myApp.version'
@@ -15,9 +16,10 @@ angular.module('myApp', [
         $routeProvider.otherwise({redirectTo: '/home'});
     }]);
 
+var APP_ID = '6A8A00EF-93B2-745A-FFDD-06ABA389D200';
+var API_KEY = '26B3F117-89F4-DBA7-FF2C-6BEA2C35DC00';
 
-Backendless.initApp('7AA56302-6639-E35D-FF88-10129D67B600', 'AE12543B-3D3C-535F-FFC1-D54DE96DC700', 'v1');
-Backendless.enablePromises();
+Backendless.initApp(APP_ID, API_KEY);
 
 window.fbAsyncInit = function () {
     FB.init({

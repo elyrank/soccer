@@ -37,7 +37,7 @@ angular.module('myApp.home', ['ngRoute'])
             console.log("error: " + err.message);
             console.log(err);
             if (err.code == 3064) {
-                $scope.errorMsg = "Please Re-login"
+                $scope.errorMsg = "Please Re-login";
             } else {
                 $scope.errorMsg = err.message;
             }
@@ -63,7 +63,7 @@ angular.module('myApp.home', ['ngRoute'])
 
 
         function getUsersSuccess(users) {
-            users.data.sort(function (a, b) {
+            users.sort(function (a, b) {
                 if (a.state < b.state) return 1;
                 if (a.state > b.state) return -1;
                 if (!a.state) return 1;
@@ -72,16 +72,16 @@ angular.module('myApp.home', ['ngRoute'])
                 if (a.name > b.name) return -1;
                 return 0;
             });
-            $scope.users = users.data;
+            $scope.users = users;
 
-            $scope.playersYes = users.data.filter(function (usr) {
-                return usr.state == 'Yes'
+            $scope.playersYes = users.filter(function (usr) {
+                return usr.state === 'Yes';
             }).length;
-            $scope.playersNo = users.data.filter(function (usr) {
-                return usr.state == 'No'
+            $scope.playersNo = users.filter(function (usr) {
+                return usr.state === 'No';
             }).length;
-            $scope.playersMaybe = users.data.filter(function (usr) {
-                return usr.state == 'Maybe'
+            $scope.playersMaybe = users.filter(function (usr) {
+                return usr.state === 'Maybe';
             }).length;
             $scope.gameState = $scope.playersYes >= 8;
             $scope.$apply();
@@ -89,11 +89,16 @@ angular.module('myApp.home', ['ngRoute'])
 
 
         function getAllUsers() {
-            var query = new Backendless.DataQuery();
-            query.options = {
-                pageSize: 100
-            };
-            Backendless.Persistence.of(Backendless.User).find(query, new Backendless.Async(getUsersSuccess, error));
+			var userStorage = Backendless.Data.of( Backendless.User );
+			var queryBuilder = Backendless.DataQueryBuilder.create();
+
+			queryBuilder.setWhereClause("name is not null");
+			// set offset and page size
+			queryBuilder.setPageSize( 100 );
+
+			userStorage.find( queryBuilder )
+				.then(getUsersSuccess, error);
+
         }
 
         $scope.playing = function (state) {
@@ -103,7 +108,7 @@ angular.module('myApp.home', ['ngRoute'])
                 console.log("update success: " + user);
                 getAllUsers();
             }
-            Backendless.UserService.update($scope.currentUser, new Backendless.Async(updateSuccess, error));
+            Backendless.UserService.update($scope.currentUser).then(updateSuccess, error);
         };
 
         function userLoggedOut() {
@@ -111,7 +116,7 @@ angular.module('myApp.home', ['ngRoute'])
         }
 
         function logoutUser() {
-            Backendless.UserService.logout(new Backendless.Async(userLoggedOut, error));
+            Backendless.UserService.logout().then(userLoggedOut, error);
         }
 
     }]);

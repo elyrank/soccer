@@ -1,0 +1,19 @@
+<div ng-app="myApp" ng-controller="forgotCtrl" ng-submit="forgotPassword()">
+  <p class="container">Recover Password:</p>
+
+  <form>
+    <div class="container">
+      <label><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" ng-model="forgotEmail" required>
+
+      <p>{{forgotMsg}}</p>
+      <p class="errorMsg">{{errorMsg}}</p>
+
+      <div class="clearfix">
+        <button type="button" class="cancelbtn" ng-click="cancel()">Cancel</button>
+        <button type="submit" class="loginBtn">Recover password</button>
+      </div>
+    </div>
+  </form>
+
+</div>
